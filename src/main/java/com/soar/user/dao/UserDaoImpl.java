@@ -23,4 +23,12 @@ public class UserDaoImpl implements UserDao{
     public void update() {
 
     }
+
+    public UserDaoImpl() {
+    }
+
+    @Override
+    public void test1() {
+
+    }
 }
