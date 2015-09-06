@@ -1,5 +1,6 @@
 package com.soar.common.specurity;
 
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
@@ -17,22 +18,26 @@ import java.util.Collection;
  */
 public class UserLoginProvider extends AbstractUserDetailsAuthenticationProvider {
 
+    private UserDetailService userDetailService;
+
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
-
+            //此处是做校验用
     }
 
     @Override
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
-
-        String[] whiteLists = new String[]{"ADMIN", "SUPERVISOR", "JIMMY"};
-        if (Arrays.asList(whiteLists).contains(username)) {
-            Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-            UserDetails user = new User(username, "whatever", authorities);
-            return user;
-        }
-        return new User(username, "no-password", false, false, false, false, new ArrayList<GrantedAuthority>());
+        String password = (String) usernamePasswordAuthenticationToken.getCredentials();
+        UserDetails loadedUser = getUserDetailService().loadUserByUsername(username,password);
+        return loadedUser;
     }
 
+
+    public UserDetailService getUserDetailService() {
+        return userDetailService;
+    }
+
+    public void setUserDetailService(UserDetailService userDetailService) {
+        this.userDetailService = userDetailService;
+    }
 }
