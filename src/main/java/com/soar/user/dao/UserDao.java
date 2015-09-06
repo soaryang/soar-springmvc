@@ -9,5 +9,9 @@ public interface UserDao {
 
     void delete();
 
+
     void find();
+
+    void update();
+
 }

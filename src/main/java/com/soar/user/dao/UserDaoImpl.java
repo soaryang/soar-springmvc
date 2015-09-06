@@ -18,4 +18,7 @@ public class UserDaoImpl implements UserDao{
     public void find() {
 
     }
+    public void update() {
+
+    }
 }
