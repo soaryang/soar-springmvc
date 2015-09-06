@@ -8,4 +8,9 @@ public class UserDaoImpl implements UserDao{
     public void add() {
 
     }
+
+    @Override
+    public void delete() {
+
+    }
 }

@@ -6,4 +6,6 @@ package com.soar.user.dao;
 public interface UserDao {
 
     void add();
+
+    void delete();
 }
