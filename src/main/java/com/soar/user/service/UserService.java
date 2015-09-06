@@ -6,4 +6,6 @@ package com.soar.user.service;
 public interface UserService {
 
     void delete();
+
+    void add();
 }
