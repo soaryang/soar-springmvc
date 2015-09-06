@@ -13,4 +13,9 @@ public class UserDaoImpl implements UserDao{
     public void delete() {
 
     }
+
+    @Override
+    public void find() {
+
+    }
 }
