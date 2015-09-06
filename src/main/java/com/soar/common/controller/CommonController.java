@@ -11,10 +11,11 @@ import java.io.IOException;
  * Created by user on 15/9/6.
  */
 @Controller
-public class HeolloController {
-    @RequestMapping("/hello.html")
+public class CommonController {
+
+    @RequestMapping("/login.html")
     public String getCode(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
-        return "hello";
+        return "login";
     }
 }
