@@ -14,6 +14,9 @@ public interface UserDao {
 
     void update();
 
+
     void test1();
+
+    void test2();
 
 }

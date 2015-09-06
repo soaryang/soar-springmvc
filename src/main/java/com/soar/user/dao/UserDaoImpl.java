@@ -24,11 +24,16 @@ public class UserDaoImpl implements UserDao{
 
     }
 
+
     public UserDaoImpl() {
     }
 
     @Override
     public void test1() {
 
+    }
+
+    @Override
+    public void test2() {
     }
 }
