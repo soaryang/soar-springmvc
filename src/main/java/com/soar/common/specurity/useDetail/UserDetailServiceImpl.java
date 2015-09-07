@@ -19,15 +19,19 @@ public class UserDetailServiceImpl implements UserDetailService {
         //MyUsertails userDetails = new MyUsertails(username,password,getAuthorities());
         //userDetails.setUserType(userType);
         //return userDetails;
-        UserDetails userDetails = new User(username,password,getAuthorities());
+        UserDetails userDetails = new User(username,password,getAuthorities(userType));
         return userDetails;
     }
 
 
 
-    public Collection<GrantedAuthority> getAuthorities() {
+    public Collection<GrantedAuthority> getAuthorities(int userType) {
         List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
-        authList.add(new SimpleGrantedAuthority("ROLE_USER"));
+        if(userType==1){
+            authList.add(new SimpleGrantedAuthority("ROLE_USER"));
+        }else{
+            authList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }
         return authList;
     }
 }

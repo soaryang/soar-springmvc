@@ -16,6 +16,7 @@
     <form action="/checklogin">
         <input type="text" id="username" name="username"/>
         <input type="password" id="password" name="password" />
+        <input type="text" id="userType" name="userType" />
         <button type="submit" value="submit">提交</button>
     </form>
 </body>

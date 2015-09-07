@@ -18,4 +18,18 @@ public class CommonController {
             throws IOException {
         return "login";
     }
+
+
+    @RequestMapping("/noAuthority.html")
+    public String noAuthority(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        return "/common/403";
+    }
+
+    @RequestMapping("/menu.html")
+    public String menu(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        return "common/menu";
+    }
+
 }

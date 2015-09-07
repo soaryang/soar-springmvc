@@ -6,28 +6,38 @@
           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
           http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+
+
        <!--访问权限-->
        <http:http auto-config="false" use-expressions="true" entry-point-ref="loginEntryPoint">
-              <http:intercept-url pattern="/user/**" access="hasAnyRole(ROLE_USER)"/>
-              <http:intercept-url pattern="/admin/**" access="hasAnyRole(ROLE_USER)"/>
+              <http:intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER')"/>
+              <http:intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')"/>
               <!-- 替换默认的LoginFilter -->
               <http:custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER"/>
               <!-- 替换默认的LogoutFilter -->
               <!--
               <http:custom-filter ref="customLogoutFilter" position="LOGOUT_FILTER" />
               -->
+              <http:access-denied-handler ref="accessDeniedHandler"/>
+              <!--session management-->
+              <http:session-management session-authentication-strategy-ref="sas"/>
        </http:http>
 
-       <!--默认登陆-->
+
+       <bean id="accessDeniedHandler" class="com.soar.common.specurity.handler.MyAccessDeniedHandler"/>
+
+       <bean id="sas" class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy"/>
+
+       <!--默认登陆
        <bean id="loginEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
-              <constructor-arg value="/login.html"/>
+              <constructor-arg value="/hello.html"/>
        </bean>
-
-
-
+       -->
+       <bean id="loginEntryPoint" class="com.soar.common.specurity.entryPoint.UnauthorizedEntryPoint"/>
 
        <!--登陆处理-->
-       <bean id="loginFilter" class="com.soar.common.specurity.LoginAuthenticationFilter">
+       <bean id="loginFilter" class="com.soar.common.specurity.filter.LoginAuthenticationFilter">
               <property name="filterProcessesUrl" value="/checklogin"/>
               <property name="authenticationManager" ref="authenticationManager"/>
               <property name="authenticationSuccessHandler" ref="loginSuccessHandler"/>
@@ -36,17 +46,17 @@
        <http:authentication-manager alias="authenticationManager">
               <http:authentication-provider ref="userLoginProvider"/>
        </http:authentication-manager>
-       <bean id="userLoginProvider" class="com.soar.common.specurity.UserLoginProvider">
+       <bean id="userLoginProvider" class="com.soar.common.specurity.provider.UserLoginProvider">
               <property name="userDetailService" ref="userDetailService"></property>
        </bean>
-       <bean id="userDetailService" class="com.soar.common.specurity.UserDetailServiceImpl"></bean>
+       <bean id="userDetailService" class="com.soar.common.specurity.useDetail.UserDetailServiceImpl"></bean>
 
        <!--登陆成功处理-->
-       <bean id="loginSuccessHandler" class="com.soar.common.specurity.LoginSuccessHandler">
-              <property name="defaultTargetUrl" value="/hello.html" />
+       <bean id="loginSuccessHandler" class="com.soar.common.specurity.handler.LoginSuccessHandler">
+              <property name="defaultTargetUrl" value="/menu.html" />
        </bean>
        <!--登陆失败处理-->
-       <bean id="loginFailureHandler" class="com.soar.common.specurity.LoginFailureHandler">
+       <bean id="loginFailureHandler" class="com.soar.common.specurity.handler.LoginFailureHandler">
               <property name="defaultFailureUrl" value="/login.html"/>
        </bean>
 
