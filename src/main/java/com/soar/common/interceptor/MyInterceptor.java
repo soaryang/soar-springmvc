@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MyInterceptor extends HandlerInterceptorAdapter {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.print("-----------------------------------------------");
+        System.out.println("-----------------------------------------------MyInterceptor");
         return true;
     }
 }

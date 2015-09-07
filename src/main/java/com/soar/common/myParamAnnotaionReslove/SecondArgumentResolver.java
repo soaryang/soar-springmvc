@@ -15,12 +15,11 @@ import java.util.Map;
  * Created by Administrator on 2015/8/30 0030.
  */
 public class SecondArgumentResolver implements HandlerMethodArgumentResolver {
-    @Override
+
     public boolean supportsParameter(MethodParameter methodParameter) {
         return methodParameter.hasParameterAnnotation(SecondAnnotation.class);
     }
 
-    @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest,WebDataBinderFactory binderFactory) throws Exception {
         Map<String, String> uriTemplateVars =
                 (Map<String, String>) webRequest.getAttribute(

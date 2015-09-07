@@ -1,4 +1,4 @@
-package com.soar.common.specurity;
+package com.soar.common.specurity.handler;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;

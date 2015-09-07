@@ -1,4 +1,4 @@
-package com.soar.common.specurity;
+package com.soar.common.specurity.useDetail;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,5 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  */
 public interface  UserDetailService {
 
-    UserDetails loadUserByUsername(String username, String password) throws UsernameNotFoundException;
+
+    UserDetails loadUserByUsername(String username, String password,int userType) throws UsernameNotFoundException;
 }

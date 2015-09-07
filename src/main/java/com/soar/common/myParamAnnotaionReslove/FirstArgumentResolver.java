@@ -13,14 +13,12 @@ import java.util.Map;
 
 public class FirstArgumentResolver implements HandlerMethodArgumentResolver {
 
-	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
 		// 判断方法中是否有注解类型
 		boolean f=  parameter.hasParameterAnnotation(FirstAnnotation.class);
 		return f;
 	}
 
-	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		@SuppressWarnings("unchecked")
