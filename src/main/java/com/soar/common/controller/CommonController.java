@@ -14,7 +14,13 @@ import java.io.IOException;
 public class CommonController {
 
     @RequestMapping("/login.html")
-    public String getCode(HttpServletRequest req, HttpServletResponse resp)
+         public String getCode(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        return "login";
+    }
+
+    @RequestMapping("/")
+    public String login(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         return "login";
     }
@@ -26,7 +32,7 @@ public class CommonController {
         return "/common/403";
     }
 
-    @RequestMapping("/menu.html")
+    @RequestMapping("/common/menu.html")
     public String menu(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         return "common/menu";

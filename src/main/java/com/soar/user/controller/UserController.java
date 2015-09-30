@@ -21,4 +21,12 @@ public class UserController {
         System.out.println("------------------------------------------------>");
         return "user/userInfo";
     }
+
+    @RequestMapping("/add.html")
+    public String add(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        System.out.println("------------------------------------------------>");
+        System.out.print(req.getParameter("name"));
+        return "user/userInfo";
+    }
 }

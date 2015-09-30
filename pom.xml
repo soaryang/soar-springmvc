@@ -14,6 +14,8 @@
         <jsp.api>2.1</jsp.api>
         <junit>4.11</junit>
         <fastjson>1.2.6</fastjson>
+        <redis-version>2.6.0</redis-version>
+        <spring-data-redis-version>1.6.0.RELEASE</spring-data-redis-version>
     </properties>
 
     <dependencies>
@@ -92,6 +94,18 @@
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>2.2.1</version>
+        </dependency>
+
+        <!--redis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${redis-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring-data-redis-version}</version>
         </dependency>
 
 

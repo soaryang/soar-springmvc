@@ -19,5 +19,6 @@
 
     <!--加入新的spring配置文件-->
     <import resource="spring-interceptor.xml"/>
+
     <import resource="spring-scheduler.xml"/>
 </beans>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>测试界面</title>
+    <script type="text/javascript" src="jquery-1.11.3.min.js"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var object = {
+                'channelId':'1'
+            };
+            $("#myButton").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: 'http://192.168.211.172:8081/actvchannelshows/list?jsoncallback=?',
+                    data: object,
+                    async: false,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    error: function (data) {
+                        alert("error---------->"+data)
+                    },
+                    success: function (data) {
+                        alert("success---------->"+data)
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div>
+    <div id="insert">
+        <input type="button" id="myButton" value="提交"/>
+    </div>
+</div>
+</body>
+</html>
